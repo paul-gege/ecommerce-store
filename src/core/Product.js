@@ -107,6 +107,7 @@ const ProductDetails = styled.div`
 const ProductText = styled.div`
 	width: 100%;
 	height: 90%;
+	padding: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -114,6 +115,8 @@ const ProductText = styled.div`
 	border-bottom: 1px solid black;
 
 	& p, & h3 {
+		width: 100%;
+		text-align: center;
 		margin: 0;
 		margin-bottom: 5px;
 	} 
