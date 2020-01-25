@@ -8,7 +8,7 @@ const Footer = () => {
 
 	return (
 		<FooterDiv>
-			<h2>Contact Developer</h2>
+			<h2>Developer</h2>
 			<div className="contact">
 				<a href="https://www.linkedin.com/in/paul-femi-gege-772885120">
 					<div className="contact-link">
@@ -40,6 +40,10 @@ const FooterDiv = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	h2 {
+		text-decoration: underline
+	}
+
 
 	img {
 		width: 3.5vw;

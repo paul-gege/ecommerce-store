@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import {NavLink, withRouter} from 'react-router-dom'
 import cube from "../user/rubiks-cube.png";
 import cart from "./cart.png";
@@ -9,6 +9,8 @@ import { itemTotal } from "./cartHelpers";
 
 const SideNav = ({history}) => {
 
+    const [toggleInput, setToggleInput] = useState(false);
+
 	const navLinkClicked = (e) => {
         e.preventDefault();
         signout(() => {
@@ -16,22 +18,30 @@ const SideNav = ({history}) => {
         })
     }
 
+    const handleToggle = (event) => {
+        setToggleInput(event.target.checked)
+    }
+
+    const removeSideBar = () => {
+        setToggleInput(false);
+    }
+
 	return (
         <WrapBar>
-            <input type="checkbox" id="toggle" name="toggle"/>
+            <input type="checkbox" id="toggle" onChange={handleToggle} checked={toggleInput} name="toggle"/>
     		<SideBarDiv className="side-nav">
                 <ul className="main-menu">
                     <div className="nav-content">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/shop" exact activeClassName="navSelect"> Shop </NavLink>
+                            <NavLink className="nav-link" to="/shop" onClick={removeSideBar} exact activeClassName="navSelect"> Shop</NavLink>
                         </li>
                         {!isAuthenticated() && (
                             <Fragment>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/signin" exact activeClassName="navSelect"> Sign-in </NavLink>
+                                    <NavLink className="nav-link" to="/signin" onClick={removeSideBar} exact activeClassName="navSelect"> Sign-in </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/signup" exact activeClassName="navSelect"> Sign-up </NavLink>
+                                    <NavLink className="nav-link" to="/signup" onClick={removeSideBar} exact activeClassName="navSelect"> Sign-up </NavLink>
                                 </li>
                             </Fragment>
                         )}
@@ -39,16 +49,16 @@ const SideNav = ({history}) => {
                             <Fragment>
                             {isAuthenticated() && isAuthenticated().user.role === 0 && (
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/user/dashboard" exact activeClassName="navSelect"> User Profile </NavLink>
+                                    <NavLink className="nav-link" to="/user/dashboard" onClick={removeSideBar} exact activeClassName="navSelect"> User Profile </NavLink>
                                 </li>
                             )}
                             {isAuthenticated() && isAuthenticated().user.role === 1 && (
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to="/admin/dashboard" exact activeClassName="navSelect"> Admin Dashboard </NavLink>
+                                    <NavLink className="nav-link" onClick={removeSideBar} to="/admin/dashboard" exact activeClassName="navSelect"> Admin Dashboard </NavLink>
                                 </li>
                             )}
                             <li className="nav-item">
-                                <NavLink to="/signout" className="nav-link" 
+                                <NavLink to="/signout" onClick={removeSideBar} className="nav-link" 
                                         onClick={navLinkClicked}
                                 >
                                     Signout
@@ -57,7 +67,7 @@ const SideNav = ({history}) => {
                         </Fragment>
                     )}
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/cart" exact activeClassName="navSelect"> Cart {itemTotal()} </NavLink>
+                            <NavLink className="nav-link" onClick={removeSideBar} to="/cart" exact activeClassName="navSelect"> Cart {itemTotal()} </NavLink>
                         </li>
                     </div>
                 </ul>
