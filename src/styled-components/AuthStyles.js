@@ -43,6 +43,11 @@ export const AuthMessageDiv = styled.div`
 		margin-top: 40px;
 		width: 30%;
 	}
+	@media (max-width: 768px) {
+    	width: 100%;
+    	height: 50%;
+    	margin-top: 20px;
+  	}
 `
 
 export const AuthForm = styled.form`
@@ -74,7 +79,7 @@ export const AuthForm = styled.form`
 
 	@media (max-width: 768px) {
     	width: 100%;
-    	height: 1000px;
+    	height: 50%;
     	margin-top: 20px;
   	}
 
@@ -95,6 +100,7 @@ export const AuthDiv = styled.div`
     	flex-direction: column;
     	width: 100%;
     	min-width: 0;
+    	height: 1000px;
     	margin-top: 100px;
   	}
 
