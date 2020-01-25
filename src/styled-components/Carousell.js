@@ -7,7 +7,7 @@ export const CarousellDiv = styled.div`
 	overflow-x: scroll;
 	overflow-y: hidden;
 	scroll-behaviour: smooth;
-	border: 1px solid black;
+	box-shadow: -5px 5px 7px #E5E5E5;
 
 	/* width */
 	::-webkit-scrollbar {

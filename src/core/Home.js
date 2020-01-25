@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
 import {getProducts} from "./apiCore.js";
+import {Link} from "react-router-dom";
 import CarousellCard from "./CarousellCard.js"
 import {CarousellDiv} from "../styled-components/Carousell.js";
 import styled from "styled-components";
 import banner from "./banner.jpg";
+import bannerTwo from "./bannert-two.png";
 
 const Home = () => {
 	const [productsBySell, setProductsBySell] = useState([]);
@@ -38,14 +40,11 @@ const Home = () => {
 	return (
 		<FeaturedProducts>
 			<div className="banner">
-				<img src={banner} alt="Display Product"/>
+				<Link to="/shop"><img src={banner} alt="Display Product"/></Link>
 				<div className="banner-caption">
 					<h1>Simple E-commerce store</h1>
 					<h2>Created By: Paul Gege </h2>
 					<h3>Try out all features</h3>
-					<div className="contact">
-						<a href="linkedin.com/in/paul-femi-gege-772885120">Click Here for LinkedIn Profile</a>
-					</div>
 				</div>
 			</div>
 			<h2>Best Sellers</h2>
@@ -56,6 +55,9 @@ const Home = () => {
 					)
 				})}
 			</CarousellDiv>
+			<div className="banner banner-two">
+				<Link to="/shop"><img src={bannerTwo} alt="Display Product"/></Link>
+			</div>
 			<h2>New Arrivals</h2>
 			<CarousellDiv>
 				{productsByArrival.map((product, i) => {
@@ -72,11 +74,11 @@ const FeaturedProducts = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border: 1px solid black;
 
 	.banner {
 		width: 100%;
 		position: relative;
+		margin-bottom: 50px;
 	}
 
 	.banner img {
@@ -89,6 +91,10 @@ const FeaturedProducts = styled.div`
 		bottom: 20%;
 		left: 5%;
 		color: white;
+	}
+
+	.banner-two {
+		margin-top: 40px;
 	}
 
 	.banner-caption h1 {
@@ -109,6 +115,10 @@ const FeaturedProducts = styled.div`
 	}
 	.carousell-card {
 		width: calc(100% / 2);
+	}
+
+	h2 {
+		align-self: flex-start;
 	}
 
 	@media (max-width: 768px) {

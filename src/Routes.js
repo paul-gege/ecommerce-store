@@ -18,6 +18,7 @@ import Profile from "./user/Profile.js";
 import ManageProducts from "./admin/ManageProducts.js";
 import UpdateProduct from "./admin/UpdateProduct.js";
 import SideNav from "./core/SideNav.js";
+import Footer from "./core/Footer.js";
 
 
 const Routes = () => {
@@ -42,6 +43,7 @@ const Routes = () => {
 				<AdminRoute path="/admin/products" component={ManageProducts} exact/>
 				<AdminRoute path="/admin/product/update/:productId" component={UpdateProduct} exact/>
 			</Switch>
+			<Footer/>
 		</BrowserRouter>
 
 	)

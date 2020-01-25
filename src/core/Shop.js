@@ -198,8 +198,9 @@ const ShopDiv = styled.div`
 
 
 	.load-more {
-		width: 40%;
+		width: 30%;
 		height: 30px;
+		border-radius: 10px;
 		background-color: #22CCF2
 	}
 
