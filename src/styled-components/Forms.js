@@ -23,7 +23,7 @@ export const FormInputs = styled.div`
 `
 
 export const FormBody = styled.div`
-	height: 60%;
+	height: 60% ;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -32,6 +32,6 @@ export const FormBody = styled.div`
 export const FormHeading = styled.div`
 	display: flex;
 	flex-direction: column;
-	height: 20%; 
+	height: 30%; 
 	justify-content: space-around;
 `
