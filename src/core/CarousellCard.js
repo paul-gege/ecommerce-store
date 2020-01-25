@@ -30,13 +30,13 @@ const StyledLink = styled(Link)`
 	img {
 		width: 60%;
 		position: absolute;
-		bottom: 25%;		
+		bottom: 40%;		
 	}
 
 	span {
 		display: block;
 		position: absolute;
-		top: 80%;
+		top: 75%;
 		left: 0px;
 		right: 0px;
 	}
