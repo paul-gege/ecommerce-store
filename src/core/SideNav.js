@@ -13,6 +13,7 @@ const SideNav = ({history}) => {
 
 	const navLinkClicked = (e) => {
         e.preventDefault();
+        removeSideBar();
         signout(() => {
             history.push("/signin");
         })
@@ -58,7 +59,7 @@ const SideNav = ({history}) => {
                                 </li>
                             )}
                             <li className="nav-item">
-                                <NavLink to="/signout" onClick={removeSideBar} className="nav-link" 
+                                <NavLink to="/signout" className="nav-link" 
                                         onClick={navLinkClicked}
                                 >
                                     Signout
