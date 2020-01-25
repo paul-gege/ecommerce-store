@@ -5,6 +5,7 @@ export const CarousellDiv = styled.div`
 	display: flex;
 	align-items: center;
 	overflow-x: scroll;
+	overflow-y: hidden;
 	scroll-behaviour: smooth;
 	border: 1px solid black;
 

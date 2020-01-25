@@ -3,7 +3,7 @@ import {getProducts} from "./apiCore.js";
 import CarousellCard from "./CarousellCard.js"
 import {CarousellDiv} from "../styled-components/Carousell.js";
 import styled from "styled-components";
-import banner from "./banner.jpeg";
+import banner from "./banner.jpg";
 
 const Home = () => {
 	const [productsBySell, setProductsBySell] = useState([]);
@@ -42,7 +42,7 @@ const Home = () => {
 				<div className="banner-caption">
 					<h1>Simple E-commerce store</h1>
 					<h2>Created By: Paul Gege </h2>
-					<h3>Shop like you would usually shop (enter fake credit card on checkout)</h3>
+					<h3>Try out all features</h3>
 					<div className="contact">
 						<a href="linkedin.com/in/paul-femi-gege-772885120">Click Here for LinkedIn Profile</a>
 					</div>
@@ -101,7 +101,7 @@ const FeaturedProducts = styled.div`
 	}
 	.banner-caption h3 {
 		font-size: 1.5vw;
-		color: red
+		color: white;
 	}
 	.banner-caption a {
 		font-size: 1.5vw;
