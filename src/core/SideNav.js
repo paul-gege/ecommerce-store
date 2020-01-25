@@ -76,9 +76,9 @@ const SideBarDiv = styled.div`
     padding-left: 30px;
     box-shadow: 0px 5px 7px #E5E5E5;
     position: fixed;
-    z-index: 2;
+    z-index: 2000;
     background-color: white;
-    right: -70%;
+    right: -100%;
     top: 0%;
     transition: right 0.5s;
 

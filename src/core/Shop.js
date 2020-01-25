@@ -90,7 +90,7 @@ const Shop = () => {
 	const loadMoreButton = () => {
 		return (
 			size > 0 && size >=limit && (
-				<button onClick={loadMore}> Load More </button>
+				<button className="load-more" onClick={loadMore}> Load More </button>
 			)
 		)
 	}
@@ -146,8 +146,10 @@ const Shop = () => {
 						return <ShopCard key={index} product={product} />
 					})}
 				</div>
+				<div className="load-more-div">
+					{loadMoreButton()}
+				</div>
 			</ShopDiv>
-			{loadMoreButton()}
 		</Fragment>	
 	)
 }
@@ -193,7 +195,25 @@ const ShopDiv = styled.div`
     #filter-toggle:checked + .sidebar {
         display: block;  
     }
-	
+
+
+	.load-more {
+		width: 40%;
+		height: 30px;
+		background-color: #22CCF2
+	}
+
+	.load-more:hover {
+		background-color: #14D9B5;
+	}
+
+	.load-more-div{
+		margin-top: 10px;
+		margin-bottom: 50px;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
 
 	@media (max-width: 768px) {
 		grid-template-columns: 1fr;

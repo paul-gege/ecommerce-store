@@ -117,9 +117,9 @@ const AddProduct = () => {
 		//Submit to our post route
 		event.preventDefault();
 		setValues({...values, error: ""});
-        console.log(formData);
 		createProduct(user._id, token, formData)
 		.then((data) => {
+            console.log(data.error);
 			if(data.error){
 				setValues({...values, error: data.error});
 			} else {
@@ -139,75 +139,76 @@ const AddProduct = () => {
     const newProductForm = () => {
 		return (
         <ProductFormDiv>
-        <form onSubmit={clickSubmit}>
-			<AuthErrorDiv displayMe={error}><p>{error}</p></AuthErrorDiv>
-			<AuthSuccessDiv displayMe={createdProduct}><p>{createdProduct} is created</p></AuthSuccessDiv>
-            <input
-                className="textInputs"
-                onChange={handleChange("name")}
-                type="text"
-                className="form-control"
-                value={name}
-                placeholder="Product Name"
-            />
-
-            <textarea
-                onChange={handleChange("description")}
-                className="form-control"
-                value={description}
-                placeholder="Product Description"
-            />
-
-            <input
-                className="textInputs"
-                onChange={handleChange("price")}
-                type="number"
-                className="form-control"
-                value={price}
-                placeholder="Input product price"
-            />
-
-
-            <select
-                onChange={handleChange("category")}
-                className="form-control"
-            >
-                <option>Please select a category</option>
-                {categories &&
-                    categories.map((c, i) => (
-                        <option key={i} value={c._id}>
-                            {c.name}
-                        </option>
-                    ))}
-            </select>
-            
-            <input
-                className="btn"
-                className="textInputs"
-                onChange={handleChange("quantity")}
-                type="number"
-                className="form-control"
-                value={quantity}
-                placeholder = "Product Quantity"
-            />
-
-            <UploadDiv>
-                <label htmlFor="file-upload" className="upload-btn">
-                    Choose multiple images to upload
-                </label>
+            <form onSubmit={clickSubmit}>
+    			<AuthErrorDiv displayMe={error}><p>{error}</p></AuthErrorDiv>
+    			<AuthSuccessDiv displayMe={createdProduct}><p>{createdProduct} is created</p></AuthSuccessDiv>
                 <input
-                    id="file-upload"
-                    onChange={handleChange("photo")}
-                    type="file"
-                    name="photo"
-                    accept="image/*"
-                    multiple
+                    className="textInputs"
+                    onChange={handleChange("name")}
+                    type="text"
+                    className="form-control"
+                    value={name}
+                    placeholder="Product Name"
                 />
-                {renderUploads()}
-            </UploadDiv>
-            <hr/>
-            <button>Create Product</button>
-        </form>  </ProductFormDiv>)   	
+
+                <textarea
+                    onChange={handleChange("description")}
+                    className="form-control"
+                    value={description}
+                    placeholder="Product Description"
+                />
+
+                <input
+                    className="textInputs"
+                    onChange={handleChange("price")}
+                    type="number"
+                    className="form-control"
+                    value={price}
+                    placeholder="Input product price"
+                />
+
+
+                <select
+                    onChange={handleChange("category")}
+                    className="form-control"
+                >
+                    <option>Please select a category</option>
+                    {categories &&
+                        categories.map((c, i) => (
+                            <option key={i} value={c._id}>
+                                {c.name}
+                            </option>
+                        ))}
+                </select>
+                
+                <input
+                    className="btn"
+                    className="textInputs"
+                    onChange={handleChange("quantity")}
+                    type="number"
+                    className="form-control"
+                    value={quantity}
+                    placeholder = "Product Quantity"
+                />
+
+                <UploadDiv>
+                    <label htmlFor="file-upload" className="upload-btn">
+                        Choose multiple images to upload
+                    </label>
+                    <input
+                        id="file-upload"
+                        onChange={handleChange("photo")}
+                        type="file"
+                        name="photo"
+                        accept="image/*"
+                        multiple
+                    />
+                    {renderUploads()}
+                </UploadDiv>
+                <hr/>
+                <button>Create Product</button>
+            </form>  
+        </ProductFormDiv>)   	
     }
 
 	return (

@@ -95,7 +95,7 @@ export const AuthDiv = styled.div`
     	flex-direction: column;
     	width: 100%;
     	min-width: 0;
-    	margin-top: 50px;
+    	margin-top: 100px;
   	}
 
 `

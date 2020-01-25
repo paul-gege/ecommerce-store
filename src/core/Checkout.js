@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {getBraintreeClientToken, processPayment, createOrder} from "./apiCore.js";
 import {getCart, emptyCart} from "./cartHelpers.js";
@@ -33,6 +33,14 @@ const Checkout = ({products}) => {
 		setData({...data, address: event.target.value});
 	}
 
+	const deliveryAddressFilled = () => {
+		if(data.address){
+			return true;
+		} else {
+			return false
+		}
+	}
+
 	useEffect(() => {
 		getToken(userId, token);
 	}, []);
@@ -48,7 +56,7 @@ const Checkout = ({products}) => {
 			<div>{showDropIn()}</div>
 		): (
 			<Link to="/signin">
-				<button>Sign in to checkout</button>
+				Sign in to checkout
 			</Link>
 		);
 	};
@@ -93,24 +101,27 @@ const Checkout = ({products}) => {
 	const showDropIn = () => (
         <div onBlur={() => setData({ ...data, error: "" })}>
             {data.clientToken !== null && products.length > 0 ? (
-                <div>
-                	<div>
+                <Fragment>
+                	<AddressDiv>
+                		{(!deliveryAddressFilled()) ? <span> Please enter a Delivery Address </span> : ""}
                 		<textarea
 							onChange={handleAddress}
 							value={data.address}
 							placeholder="Type your delivery address here please"
                 		/>
-                	</div>
+                	</AddressDiv>
                     <DropIn
                         options={{
                             authorization: data.clientToken
                         }}
                         onInstance={instance => (data.instance = instance)}
                     />
-                    <button onClick={buy}>
-                        Pay
-                    </button>
-                </div>
+                    <PayButton>
+                    	<button disabled={!deliveryAddressFilled()} onClick={buy}>
+                       		Pay
+                    	</button>
+                    </PayButton>
+                </Fragment>
             ) : null}
         </div>
     );
@@ -123,5 +134,46 @@ const Checkout = ({products}) => {
 	)
 
 }
+
+const AddressDiv = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	span {
+		color: #FF6966;
+		margin-bottom: 10px;
+	}
+
+	textarea {
+		width: 100%;
+		border: 1px solid black;
+		border-radius: 5px;
+	}
+
+	textarea::placeholder {
+		color: black;
+	}
+`
+
+const PayButton = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40px;
+	
+	button {
+		width: 80%;
+		border: 0;
+		height: 100%;
+		background-color: #14D9B5;
+	}
+
+	button:disabled {
+		background-color: grey;
+		color: black;
+	}
+`
 
 export default Checkout;

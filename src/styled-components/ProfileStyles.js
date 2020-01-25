@@ -68,13 +68,6 @@ export const HistoryDiv = styled.div`
 		text-decoration: none;
 		color: black;
 	}
-
-	.orders {
-		width: 100%;
-		min-width: 800px;
-		box-shadow: 0px 5px 7px #E5E5E5;
-		margin-bottom: 20px;
-	}
 `
 
 export const ProfileContent = styled.div`

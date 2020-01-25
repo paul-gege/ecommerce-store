@@ -9,7 +9,7 @@ const CarousellCard = ({product}) => {
 		<AspectRatioDiv>
 			<StyledLink to={`/product/${product._id}`}>
 				<CarousellCardImage item={product} index={0} />
-				<span>{product.name}</span>
+				<span>{product.name.substring(0, 20)}{(product.name.length < 20) ? "" : "..."}</span>
 			</StyledLink>
 		</AspectRatioDiv>
 	)
@@ -44,7 +44,7 @@ const StyledLink = styled(Link)`
 
 const AspectRatioDiv = styled.div`
 	min-width: calc(100% / 4);
-
+	min-height: 125px;
 	@media (max-width: 768px) {
    		min-width: calc(100% / 3);
     }

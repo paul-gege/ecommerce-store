@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavBar = styled.nav`
-    z-index: 3;
+    z-index: 3000;
     position: absolute;
 
     .logo {

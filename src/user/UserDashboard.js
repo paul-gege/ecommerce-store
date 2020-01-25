@@ -40,7 +40,7 @@ const Dashboard = () => {
 			<Fragment>
 				{history.map((purchase, index) => {
 					return (
-						<OrderList className="orders">
+						<OrderList>
 							<div className="order-number"><span className="header">Order Number:</span> {index}</div>
 							{purchase.products.map((product, index) => {
 								return (
@@ -95,6 +95,7 @@ const OrderList = styled.div`
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 10px;
+	margin-bottom: 20px;
 
 	.order-number {
 		grid-column: 1/5;
@@ -118,6 +119,14 @@ const OrderList = styled.div`
 	div {
 		padding: 10px;
 	}
+
+	@media (max-width: 768px) {
+    	grid-template-columns: 1fr;
+
+    	.order-number {
+    		grid-column: 1/2;
+    	}
+  	}
 `
 
 export default Dashboard;

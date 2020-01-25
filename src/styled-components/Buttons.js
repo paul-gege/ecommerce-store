@@ -12,5 +12,12 @@ export const FormButton = styled.button`
 	&:hover {
 		background-color: #14D9B5;
 	}
+	@media (max-width: 768px) {
+    	width: 60%;
+  	}
 
+`
+
+export const ProfileFormButton = styled(FormButton)`
+	align-self: center;
 `

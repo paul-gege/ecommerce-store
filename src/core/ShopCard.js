@@ -10,7 +10,7 @@ const ShopCard = ({product}) => {
 			<StyledLink to={`/product/${product._id}`}>
 				<span className="price" >${product.price}</span>
 				<CarousellCardImage item={product} index={0} />
-				<span>{product.name}</span>
+				<span>{product.name.substring(0, 20)}{(product.name.length < 20) ? "" : "..."}</span>
 			</StyledLink>
 		</AspectRatioDiv>
 	)
